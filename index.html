@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/sytle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School website</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKNkCmSdbTpshq9B21oIe2fUuQy0Ss3CE"></script>
+    <script src="scripts.js"></script>
+    <script src="Auth.js"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Excellence Academy</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="auth-links">
+                        <a href="#" id="registerLink">Register</a>
+                    </li>
+                    <li class="auth-links">
+                        <a href="#" id="signInLink">log In</a>
+                    </li>
+                    <li class="auth-links">
+                        <a href="#" id="signOutLink">log Out</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Welcome to Excellence Academy</h1>
+            <p>Nurturing Minds, Building Futures</p>
+            <a href="#contact" class="cta-button">Apply Now</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <p>Excellence Academy is dedicated to providing exceptional education and fostering a love for learning. With our experienced faculty and modern facilities, we ensure every student reaches their full potential.</p>
+        </div>
+    </section>
+
+    <section id="programs" class="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <h3>Primary Education</h3>
+                <p>Building strong foundations for lifelong learning</p>
+            </div>
+            <div class="program-card">
+                <h3>Secondary Education</h3>
+                <p>Preparing students for academic excellence</p>
+            </div>
+            <div class="program-card">
+                <h3>Special Programs</h3>
+                <p>Extra-curricular activities for holistic development</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-list">
+            <div class="event-item">
+                <h3>Annual Sports Day</h3>
+                <p>Date: March 15, 2025</p>
+            </div>
+            <div class="event-item">
+                <h3>Science Fair</h3>
+                <p>Date: April 5, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2 class="section-title">Our Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/image/classroom 1.jpg" alt="School Event 1">
+                <div class="overlay">
+                    <h3>School Event</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/classroom.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Classroom</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/classroom2.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Students</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/classroom4.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Software Engineering</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/lab.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Coding and Robotics</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/lab2.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Coding and Robotics</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/lab3.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Coding and Robotics</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="/image/vid2.jpg" alt="School Event 2">
+                <div class="overlay">
+                    <h3>Software Engineering</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="location" class="section">
+        <h2 class="section-title">Our Location</h2>
+        <div id="map-container" style="height: 400px; width: 100%;"></div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>123 Education Street</p>
+                <p>New Orleans</p>
+                <p>Phone: +1(345) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#programs">Programs</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="regName">Name:</label>
+                <input type="text" id="regName" required>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" required minlength="8">
+                <small>Password must be at least 8 characters long</small>
+            </div>
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+        <p class="form-footer">Already have an account? <a href="#" id="switchToSignIn">Sign In</a></p>
+    </div>
+</div>
+
+<div id="signInModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sign In</h2>
+        <form id="signInForm">
+            <div class="form-group">
+                <label for="signInEmail">Email:</label>
+                <input type="email" id="signInEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="signInPassword">Password:</label>
+                <input type="password" id="signInPassword" required>
+            </div>
+            <button type="submit" class="submit-button">Sign In</button>
+        </form>
+        <p class="form-footer">Don't have an account? <a href="#" id="switchToRegister">Register</a></p>
+    </div>
+</div>
+</body>
+</html>
