@@ -14,11 +14,23 @@ class Auth {
     }
 
     initializeEventListeners() {
-        this.registerLink?.addEventListener('click', (e) => this.showModal(e, this.registrationModal));
-        this.signInLink?.addEventListener('click', (e) => this.showModal(e, this.signInModal));
-        this.switchToSignIn?.addEventListener('click', (e) => this.switchModals(e, this.registrationModal, this.signInModal));
-        this.switchToRegister?.addEventListener('click', (e) => this.switchModals(e, this.signInModal, this.registrationModal));
         
+        if (this.registerLink) {
+            this.registerLink.addEventListener('click', (e) => this.showModal(e, this.registrationModal));
+        }
+        
+        if (this.signInLink) {
+            this.signInLink.addEventListener('click', (e) => this.showModal(e, this.signInModal));
+        }
+        
+        if (this.switchToSignIn) {
+            this.switchToSignIn.addEventListener('click', (e) => this.switchModals(e, this.registrationModal, this.signInModal));
+        }
+        
+        if (this.switchToRegister) {
+            this.switchToRegister.addEventListener('click', (e) => this.switchModals(e, this.signInModal, this.registrationModal));
+        }
+
         this.closeButtons.forEach(button => {
             button.addEventListener('click', () => this.closeModals());
         });
@@ -29,41 +41,38 @@ class Auth {
             }
         });
 
-        document.getElementById('registrationForm')?.addEventListener('submit', (e) => this.handleRegistration(e));
-        document.getElementById('signInForm')?.addEventListener('submit', (e) => this.handleSignIn(e));
-        this.signOutLink?.addEventListener('click', (e) => this.handleSignOut(e));
+        const registrationForm = document.getElementById('registrationForm');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', (e) => this.handleRegistration(e));
+        }
+        
+        const signInForm = document.getElementById('signInForm');
+        if (signInForm) {
+            signInForm.addEventListener('submit', (e) => this.handleSignIn(e));
+        }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('auth-link')) {  
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
+        if (this.signOutLink) {
+            this.signOutLink.addEventListener('click', (e) => this.handleSignOut(e));
+        }
     }
 
     showModal(e, modal) {
         e.preventDefault();
         this.closeModals(); 
-        modal.style.display = 'block';
+        if (modal) {
+            modal.style.display = 'block';
+        }
     }
 
     switchModals(e, fromModal, toModal) {
         e.preventDefault();
-        fromModal.style.display = 'none';
-        toModal.style.display = 'block';
+        if (fromModal) fromModal.style.display = 'none';
+        if (toModal) toModal.style.display = 'block';
     }
 
     closeModals() {
-        this.registrationModal.style.display = 'none';
-        this.signInModal.style.display = 'none';
+        if (this.registrationModal) this.registrationModal.style.display = 'none';
+        if (this.signInModal) this.signInModal.style.display = 'none';
     }
 
     checkAuthStatus() {
@@ -170,44 +179,4 @@ class Auth {
         this.checkAuthStatus();
         alert('You have been signed out.');
     }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const auth = new Auth();
-    
-    initializePageFeatures();
-});
-
-function initializePageFeatures() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            alert(`Thank you for your message, ${name}! We will get back to you soon.`);
-            this.reset();
-        });
-    }
-
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
-        
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
-        });
-    });
 }

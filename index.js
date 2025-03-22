@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const auth = new Auth();
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             if (!this.classList.contains('auth-link')) { 
